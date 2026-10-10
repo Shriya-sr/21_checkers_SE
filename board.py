@@ -17,3 +17,6 @@ def initial_board():
 def move_piece(board, start, end):
     board[end[0]][end[1]] = board[start[0]][start[1]]
     board[start[0]][start[1]] = "."
+    # A two-row move is a jump: clear the square that was jumped over.
+    if abs(end[0] - start[0]) == 2:
+        board[(start[0] + end[0]) // 2][(start[1] + end[1]) // 2] = "."
